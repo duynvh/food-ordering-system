@@ -10,6 +10,7 @@
         <module>infrastructure</module>
         <module>infrastructure/kafka</module>
         <module>customer-service</module>
+        <module>payment-service</module>
     </modules>
 
     <parent>
@@ -34,6 +35,7 @@
 
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>com.food.ordering.system</groupId>
                 <artifactId>order-domain-core</artifactId>
@@ -59,9 +61,21 @@
                 <artifactId>order-messaging</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.food.ordering.system</groupId>
+                <artifactId>payment-domain-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.food.ordering.system</groupId>
                 <artifactId>common-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.food.ordering.system</groupId>
+                <artifactId>common-dataaccess</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
