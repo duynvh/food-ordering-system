@@ -8,6 +8,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 public class OrderApprovedEvent extends OrderApprovalEvent {
+
     private final DomainEventPublisher<OrderApprovedEvent> orderApprovedEventDomainEventPublisher;
 
     public OrderApprovedEvent(OrderApproval orderApproval,

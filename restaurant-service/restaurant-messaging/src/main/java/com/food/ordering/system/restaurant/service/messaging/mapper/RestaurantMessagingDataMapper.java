@@ -16,7 +16,8 @@ import java.util.stream.Collectors;
 
 @Component
 public class RestaurantMessagingDataMapper {
-    public RestaurantApprovalResponseAvroModel orderApprovedEventToRestaurantApprovalResponseAvroModel(OrderApprovedEvent orderApprovedEvent) {
+    public RestaurantApprovalResponseAvroModel
+    orderApprovedEventToRestaurantApprovalResponseAvroModel(OrderApprovedEvent orderApprovedEvent) {
         return RestaurantApprovalResponseAvroModel.newBuilder()
                 .setId(UUID.randomUUID().toString())
                 .setSagaId("")
@@ -43,7 +44,8 @@ public class RestaurantMessagingDataMapper {
                 .build();
     }
 
-    public RestaurantApprovalRequest restaurantApprovalRequestAvroModelToRestaurantApproval(RestaurantApprovalRequestAvroModel
+    public RestaurantApprovalRequest
+    restaurantApprovalRequestAvroModelToRestaurantApproval(RestaurantApprovalRequestAvroModel
                                                                    restaurantApprovalRequestAvroModel) {
         return RestaurantApprovalRequest.builder()
                 .id(restaurantApprovalRequestAvroModel.getId())

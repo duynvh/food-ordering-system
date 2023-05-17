@@ -14,7 +14,9 @@ import java.util.UUID;
 
 @Component
 public class PaymentMessagingDataMapper {
-    public PaymentResponseAvroModel paymentCompletedEventToPaymentResponseAvroModel(PaymentCompletedEvent paymentCompletedEvent) {
+
+    public PaymentResponseAvroModel
+    paymentCompletedEventToPaymentResponseAvroModel(PaymentCompletedEvent paymentCompletedEvent) {
         return PaymentResponseAvroModel.newBuilder()
                 .setId(UUID.randomUUID().toString())
                 .setSagaId("")
@@ -28,7 +30,8 @@ public class PaymentMessagingDataMapper {
                 .build();
     }
 
-    public PaymentResponseAvroModel paymentCancelledEventToPaymentResponseAvroModel(PaymentCancelledEvent paymentCancelledEvent) {
+    public PaymentResponseAvroModel
+    paymentCancelledEventToPaymentResponseAvroModel(PaymentCancelledEvent paymentCancelledEvent) {
         return PaymentResponseAvroModel.newBuilder()
                 .setId(UUID.randomUUID().toString())
                 .setSagaId("")
@@ -42,7 +45,8 @@ public class PaymentMessagingDataMapper {
                 .build();
     }
 
-    public PaymentResponseAvroModel paymentFailedEventToPaymentResponseAvroModel(PaymentFailedEvent paymentFailedEvent) {
+    public PaymentResponseAvroModel
+    paymentFailedEventToPaymentResponseAvroModel(PaymentFailedEvent paymentFailedEvent) {
         return PaymentResponseAvroModel.newBuilder()
                 .setId(UUID.randomUUID().toString())
                 .setSagaId("")

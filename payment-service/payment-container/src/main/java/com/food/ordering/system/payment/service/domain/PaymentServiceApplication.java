@@ -10,6 +10,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication(scanBasePackages = "com.food.ordering.system")
 public class PaymentServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(PaymentDomainService.class, args);
+        SpringApplication.run(PaymentServiceApplication.class, args);
     }
 }

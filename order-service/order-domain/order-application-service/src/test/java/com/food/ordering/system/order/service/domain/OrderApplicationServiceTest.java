@@ -129,7 +129,8 @@ public class OrderApplicationServiceTest {
                                 .build()))
                 .build();
 
-        Customer customer = new Customer(new CustomerId(CUSTOMER_ID));
+        Customer customer = new Customer();
+        customer.setId(new CustomerId(CUSTOMER_ID));
 
         Restaurant restaurantResponse = Restaurant.builder()
                 .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))
@@ -152,7 +153,7 @@ public class OrderApplicationServiceTest {
        CreateOrderResponse createOrderResponse = orderApplicationService.createOrder(createOrderCommand);
        assertEquals(createOrderResponse.getOrderStatus(), OrderStatus.PENDING);
        assertEquals(createOrderResponse.getMessage(), "Order created successfully");
-       assertNotNull(createOrderResponse.getOrderTackingId());
+       assertNotNull(createOrderResponse.getOrderTrackingId());
     }
 
     @Test

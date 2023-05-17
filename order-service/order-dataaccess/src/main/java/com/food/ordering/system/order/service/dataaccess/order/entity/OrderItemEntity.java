@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -13,8 +12,8 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "order_items")
 @IdClass(OrderItemEntityId.class)
+@Table(name = "order_items")
 @Entity
 public class OrderItemEntity {
     @Id
@@ -34,7 +33,7 @@ public class OrderItemEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderItemEntity that = (OrderItemEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(order, that.order);
+        return id.equals(that.id) && order.equals(that.order);
     }
 
     @Override

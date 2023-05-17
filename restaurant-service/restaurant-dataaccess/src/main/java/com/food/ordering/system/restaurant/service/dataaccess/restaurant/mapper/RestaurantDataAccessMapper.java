@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class RestaurantDataAccessMapper {
+
     public List<UUID> restaurantToRestaurantProducts(Restaurant restaurant) {
         return restaurant.getOrderDetail().getProducts().stream()
                 .map(product -> product.getId().getValue())
@@ -66,4 +67,5 @@ public class RestaurantDataAccessMapper {
                 .approvalStatus(orderApprovalEntity.getStatus())
                 .build();
     }
+
 }

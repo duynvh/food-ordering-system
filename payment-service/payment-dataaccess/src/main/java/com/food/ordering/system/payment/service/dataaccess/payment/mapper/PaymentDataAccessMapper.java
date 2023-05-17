@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PaymentDataAccessMapper {
+
     public PaymentEntity paymentToPaymentEntity(Payment payment) {
         return PaymentEntity.builder()
                 .id(payment.getId().getValue())
@@ -30,4 +31,5 @@ public class PaymentDataAccessMapper {
                 .createdAt(paymentEntity.getCreatedAt())
                 .build();
     }
+
 }

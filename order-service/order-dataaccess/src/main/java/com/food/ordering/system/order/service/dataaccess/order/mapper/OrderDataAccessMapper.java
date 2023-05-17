@@ -21,6 +21,7 @@ import static com.food.ordering.system.order.service.domain.entity.Order.FAILURE
 
 @Component
 public class OrderDataAccessMapper {
+
     public OrderEntity orderToOrderEntity(Order order) {
         OrderEntity orderEntity = OrderEntity.builder()
                 .id(order.getId().getValue())
@@ -32,11 +33,11 @@ public class OrderDataAccessMapper {
                 .items(orderItemsToOrderItemEntities(order.getItems()))
                 .orderStatus(order.getOrderStatus())
                 .failureMessages(order.getFailureMessages() != null ?
-                        String.join(FAILURE_MESSAGE_DELIMITER, order.getFailureMessages()): " ")
+                        String.join(FAILURE_MESSAGE_DELIMITER, order.getFailureMessages()) : "")
                 .build();
-
         orderEntity.getAddress().setOrder(orderEntity);
         orderEntity.getItems().forEach(orderItemEntity -> orderItemEntity.setOrder(orderEntity));
+
         return orderEntity;
     }
 
@@ -51,7 +52,8 @@ public class OrderDataAccessMapper {
                 .trackingId(new TrackingId(orderEntity.getTrackingId()))
                 .orderStatus(orderEntity.getOrderStatus())
                 .failureMessages(orderEntity.getFailureMessages().isEmpty() ? new ArrayList<>() :
-                        new ArrayList<>(Arrays.asList(orderEntity.getFailureMessages().split(FAILURE_MESSAGE_DELIMITER))))
+                        new ArrayList<>(Arrays.asList(orderEntity.getFailureMessages()
+                                .split(FAILURE_MESSAGE_DELIMITER))))
                 .build();
     }
 
@@ -68,12 +70,10 @@ public class OrderDataAccessMapper {
     }
 
     private StreetAddress addressEntityToDeliveryAddress(OrderAddressEntity address) {
-        return new StreetAddress(
-                address.getId(),
+        return new StreetAddress(address.getId(),
                 address.getStreet(),
                 address.getPostalCode(),
-                address.getCity()
-        );
+                address.getCity());
     }
 
     private List<OrderItemEntity> orderItemsToOrderItemEntities(List<OrderItem> items) {

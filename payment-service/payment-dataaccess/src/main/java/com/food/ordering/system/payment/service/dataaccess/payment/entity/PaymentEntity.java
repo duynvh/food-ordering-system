@@ -17,6 +17,7 @@ import java.util.UUID;
 @Table(name = "payments")
 @Entity
 public class PaymentEntity {
+
     @Id
     private UUID id;
     private UUID customerId;
@@ -31,7 +32,7 @@ public class PaymentEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PaymentEntity that = (PaymentEntity) o;
-        return Objects.equals(id, that.id);
+        return id.equals(that.id);
     }
 
     @Override

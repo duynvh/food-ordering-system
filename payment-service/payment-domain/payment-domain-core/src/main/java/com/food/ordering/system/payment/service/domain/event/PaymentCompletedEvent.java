@@ -5,17 +5,20 @@ import com.food.ordering.system.payment.service.domain.entity.Payment;
 
 import java.time.ZonedDateTime;
 import java.util.Collections;
-import java.util.List;
 
 public class PaymentCompletedEvent extends PaymentEvent {
-    private final DomainEventPublisher<PaymentCompletedEvent> paymentEventPublisher;
-    public PaymentCompletedEvent(Payment payment, ZonedDateTime createdAt, DomainEventPublisher<PaymentCompletedEvent> paymentEventPublisher) {
+
+    private final DomainEventPublisher<PaymentCompletedEvent> paymentCompletedEventDomainEventPublisher;
+
+    public PaymentCompletedEvent(Payment payment,
+                                 ZonedDateTime createdAt,
+                                 DomainEventPublisher<PaymentCompletedEvent> paymentCompletedEventDomainEventPublisher) {
         super(payment, createdAt, Collections.emptyList());
-        this.paymentEventPublisher = paymentEventPublisher;
+        this.paymentCompletedEventDomainEventPublisher = paymentCompletedEventDomainEventPublisher;
     }
 
     @Override
     public void fire() {
-        paymentEventPublisher.publish(this);
+        paymentCompletedEventDomainEventPublisher.publish(this);
     }
 }

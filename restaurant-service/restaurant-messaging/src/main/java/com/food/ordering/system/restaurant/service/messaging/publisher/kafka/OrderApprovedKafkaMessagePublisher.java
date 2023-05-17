@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class OrderApprovedKafkaMessagePublisher implements OrderApprovedMessagePublisher {
+
     private final RestaurantMessagingDataMapper restaurantMessagingDataMapper;
     private final KafkaProducer<String, RestaurantApprovalResponseAvroModel> kafkaProducer;
     private final RestaurantServiceConfigData restaurantServiceConfigData;
@@ -54,4 +55,5 @@ public class OrderApprovedKafkaMessagePublisher implements OrderApprovedMessageP
                     " to kafka with order id: {}, error: {}", orderId, e.getMessage());
         }
     }
+
 }

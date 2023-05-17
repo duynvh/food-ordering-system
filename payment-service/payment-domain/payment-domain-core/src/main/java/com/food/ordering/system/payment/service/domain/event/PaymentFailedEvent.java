@@ -7,14 +7,19 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 public class PaymentFailedEvent extends PaymentEvent {
-    private final DomainEventPublisher<PaymentFailedEvent> paymentEventPublisher;
-    public PaymentFailedEvent(Payment payment, ZonedDateTime createdAt, List<String> failureMessages, DomainEventPublisher<PaymentFailedEvent> paymentEventPublisher) {
+
+    private final DomainEventPublisher<PaymentFailedEvent> paymentFailedEventDomainEventPublisher;
+
+    public PaymentFailedEvent(Payment payment,
+                              ZonedDateTime createdAt,
+                              List<String> failureMessages,
+                              DomainEventPublisher<PaymentFailedEvent> paymentFailedEventDomainEventPublisher) {
         super(payment, createdAt, failureMessages);
-        this.paymentEventPublisher = paymentEventPublisher;
+        this.paymentFailedEventDomainEventPublisher = paymentFailedEventDomainEventPublisher;
     }
 
     @Override
     public void fire() {
-        paymentEventPublisher.publish(this);
+        paymentFailedEventDomainEventPublisher.publish(this);
     }
 }

@@ -13,6 +13,7 @@ import java.util.UUID;
 
 @Component
 public class RestaurantRepositoryImpl implements RestaurantRepository {
+
     private final RestaurantJpaRepository restaurantJpaRepository;
     private final RestaurantDataAccessMapper restaurantDataAccessMapper;
 

@@ -1,6 +1,5 @@
 package com.food.ordering.system.payment.service.domain.entity;
 
-import com.food.ordering.system.domain.DomainConstants;
 import com.food.ordering.system.domain.entity.AggregateRoot;
 import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
@@ -14,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Payment extends AggregateRoot<PaymentId> {
+
     private final OrderId orderId;
     private final CustomerId customerId;
     private final Money price;
@@ -23,12 +23,12 @@ public class Payment extends AggregateRoot<PaymentId> {
 
     public void initializePayment() {
         setId(new PaymentId(UUID.randomUUID()));
-        createdAt = ZonedDateTime.now(ZoneId.of(DomainConstants.UTC));
+        createdAt = ZonedDateTime.now(ZoneId.of("UTC"));
     }
 
     public void validatePayment(List<String> failureMessages) {
         if (price == null || !price.isGreaterThanZero()) {
-            failureMessages.add("Total price must be greater than zero");
+            failureMessages.add("Total price must be greater than zero!");
         }
     }
 
@@ -49,6 +49,7 @@ public class Payment extends AggregateRoot<PaymentId> {
         return new Builder();
     }
 
+
     public OrderId getOrderId() {
         return orderId;
     }
@@ -68,7 +69,6 @@ public class Payment extends AggregateRoot<PaymentId> {
     public ZonedDateTime getCreatedAt() {
         return createdAt;
     }
-
 
     public static final class Builder {
         private PaymentId paymentId;

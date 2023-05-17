@@ -2,7 +2,6 @@ package com.food.ordering.system.restaurant.service.messaging.listener.kafka;
 
 import com.food.ordering.system.kafka.consumer.KafkaConsumer;
 import com.food.ordering.system.kafka.order.avro.model.RestaurantApprovalRequestAvroModel;
-import com.food.ordering.system.restaurant.service.domain.dto.RestaurantApprovalRequest;
 import com.food.ordering.system.restaurant.service.domain.ports.input.message.listener.RestaurantApprovalRequestMessageListener;
 import com.food.ordering.system.restaurant.service.messaging.mapper.RestaurantMessagingDataMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +16,7 @@ import java.util.List;
 @Slf4j
 @Component
 public class RestaurantApprovalRequestKafkaListener implements KafkaConsumer<RestaurantApprovalRequestAvroModel> {
+
     private final RestaurantApprovalRequestMessageListener restaurantApprovalRequestMessageListener;
     private final RestaurantMessagingDataMapper restaurantMessagingDataMapper;
 
@@ -48,4 +48,5 @@ public class RestaurantApprovalRequestKafkaListener implements KafkaConsumer<Res
                     restaurantApprovalRequestAvroModelToRestaurantApproval(restaurantApprovalRequestAvroModel));
         });
     }
+
 }
